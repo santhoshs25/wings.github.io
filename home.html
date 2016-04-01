@@ -1,0 +1,87 @@
+ <html ng-app="santu">
+ <body ng-controller="mainCtrl">
+        <hr>
+        <div ng-hide="authData">
+             <h1 align ="center"> WELOME CODECHLON</h1>
+        <button type="submit"class="btn btn-success" ng-click="login()">LOGIN WITH GOOGLE</button>
+        </div>
+        <div ng-show="authData">
+         <div  style="margin:20px">
+      <h1 align ="center"> WELOME CODECHLON</h1>
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#/">CODECHLON</a>
+    </div>
+    <div>
+      <ul  class="nav navbar-nav">
+        <li class="active"><a href="#/">Home</a></li>
+        <li><a href="#/profile">Profile</a></li>
+        <li><a href="#/about">About</a></li> 
+        <li><a href="#/contact">Contact us</a></li> 
+        <li style="margin-left:1100"> <button class="btn btn-danger" type="submit" ng-click="logout()">LOGOUT</button></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  </div>
+            <h4>Hi,{{authData.google.displayName}}</h4>
+            <img ng-src="{{authData.google.cachedUserProfile.picture}}" style="margin-left:35" width="100" height="100"/><br/>
+            <hr>
+    <form style="margin-left:15" ng-submit="submit()" name="form">
+        <table>
+            <tr>
+                <td>
+  <label>
+	NAME     
+	</label>
+                </td>
+                <td>
+     <input type="text" ng-model="name" required></br></td>
+     </tr>
+
+     <tr>
+         <td>
+    <label>
+     MESSAGE 
+	</label> 
+    </td>
+    <td>
+    <input type="text" ng-model="age" required></br>
+    </td>
+    </tr>
+<tr>
+    <td>
+        &nbsp
+        </td>
+        </tr>
+    <tr>
+        <td>
+    <button class="btn btn-default">Save<span class="glyphicon glyphicon-ok"></span></button>
+    </td> 
+    <td>
+        <button  class="btn btn-danger" ng-click="reset()">cancel</button>
+        </td>
+        </tr>
+        </table>
+        </form>
+        <table class="table table-bordered"> 
+<thead>
+	<th>Employee Name</th>
+	<th>Employee Message</th>
+    <th>Option</th>
+	<tbody ng-repeat="employee in data">
+	<tr>
+	<td>{{employee.name |uppercase }} </td>
+	<td>{{employee.age}} </td>
+	<td><button class="btn btn-default" ng-click="del(employee.$id,employee.name)">Delete<span class="glyphicon glyphicon-trash"></span></button></td>
+    </tr>
+	</tbody>
+</thead>
+</table>
+           
+           
+       </form>
+        </div>   
+    </body>
+ </html>
